@@ -61,6 +61,17 @@ public class ProductServiceTest {
     }
 
     @Test
+    public void testUpdateProduitNull() throws SQLException {
+        try {
+            productService.update(null);
+            Assert.fail("le produit est requis");
+        }
+        catch (RuntimeException e){
+            Assert.assertEquals("Le produit ne peut pas être null", e.getMessage());
+        }
+    }
+
+    @Test
     public void testUpdate() throws SQLException {
     }
 
