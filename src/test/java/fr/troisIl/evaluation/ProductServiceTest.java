@@ -50,6 +50,17 @@ public class ProductServiceTest {
     }
 
     @Test
+    public void testInsertProduitLabel() throws SQLException {
+        try{
+            productService.insert(new Product());
+            Assert.fail("Le libellé ne doit pas être null");
+        }
+        catch (RuntimeException e){
+            Assert.assertEquals("Le libellé du produit est requis", e.getMessage());
+        }
+    }
+
+    @Test
     public void testUpdate() throws SQLException {
     }
 
