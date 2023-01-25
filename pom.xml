@@ -22,10 +22,30 @@
         </dependency>
     </dependencies>
 
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.7</version>
+        </plugin>
+    </plugins>
+    </build>
+
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ../app-it/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${project.basedir}/report-aggregate/target/site/
+            jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
     </properties>
+
 
 </project>
