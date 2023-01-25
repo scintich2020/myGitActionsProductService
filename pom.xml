@@ -30,6 +30,7 @@
             <version>0.8.7</version>
             <executions>
                 <execution>
+                    <id>prepare-agent</id>
                     <goals>
                         <goal>prepare-agent</goal>
                     </goals>
@@ -40,6 +41,10 @@
                     <goals>
                         <goal>report</goal>
                     </goals>
+                    <configuration>
+                        <dataFile>target/jacoco.exec</dataFile>
+                        <outputDirectory>target/jacoco-ut</outputDirectory>
+                    </configuration>
                 </execution>
             </executions>
         </plugin>
