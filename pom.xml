@@ -47,11 +47,6 @@
                     </configuration>
                 </execution>
             </executions>
-            <configuration>
-                <systemPropertyVariables>
-                    <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
-                </systemPropertyVariables>
-            </configuration>
         </plugin>
     </plugins>
     </build>
@@ -65,10 +60,7 @@
             ../app-it/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
 
-        <sonar.coverage.jacoco.xmlReportPaths>
-            ${project.basedir}/report-aggregate/target/site/
-            jacoco-aggregate/jacoco.xml
-        </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
 
