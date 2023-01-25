@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EvaluationTestslogiciels</a> &gt; <a href="index.source.html" class="el_package">fr.troisIl.evaluation</a> &gt; <span class="el_source">ProductService.java</span></div><h1>ProductService.java</h1><pre class="source lang-java linenums">package fr.troisIl.evaluation;
+
+/**
+ * Contient les règles métiers sur les produits
+ */
+public class ProductService {
+
+    /**
+     * Le DAO permettant de manipuler les produits en BDD
+     */
+    private ProductDao productDao;
+
+    /**
+     * Créé le service
+     * @param database l'objet de connexion a la BDD
+     */
+<span class="fc" id="L17">    public ProductService(Database database) {</span>
+<span class="fc" id="L18">        this.productDao = new ProductDao(database);</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     * Insère le produit fourni en BDD.
+     * @param product le produit a inserer
+     * @return le produit créé
+     */
+    public Product insert(Product product) {
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if(product == null) {</span>
+<span class="nc" id="L28">            throw new RuntimeException(&quot;Le produit ne peut pas être null&quot;);</span>
+        }
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if(product.getLabel() == null) {</span>
+<span class="fc" id="L31">            throw new RuntimeException(&quot;Le libellé du produit est requis&quot;);</span>
+        }
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(product.getQuantity() == null) {</span>
+<span class="nc" id="L34">            product.setQuantity(0);</span>
+        }
+
+        //Les controles sont OK, création du produit en BDD
+<span class="nc" id="L38">        return productDao.insert(product);</span>
+    }
+
+    /**
+     * Met à jour le produit fourni en BDD
+     * @param product le produit a mettre a jour
+     * @return le produit mis a jour
+     */
+    public Product update(Product product) {
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if(product == null) {</span>
+<span class="fc" id="L48">            throw new RuntimeException(&quot;Le produit ne peut pas être null&quot;);</span>
+        }
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(product.getLabel() == null) {</span>
+<span class="nc" id="L51">            throw new RuntimeException(&quot;Le libellé du produit est requis&quot;);</span>
+        }
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(product.getId() == null) {</span>
+<span class="nc" id="L54">            throw new RuntimeException(&quot;L'identifiant du produit est requis pour une modification&quot;);</span>
+        }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if(product.getQuantity() == null) {</span>
+<span class="nc" id="L57">            throw new RuntimeException(&quot;La quantité ne peut être nulle&quot;);</span>
+        }
+
+        // vérifie que le produit existe bien en BDD avant de faire la mise à jour pour ne pas en créer un nouveau
+<span class="nc" id="L61">        findById(product.getId());</span>
+
+        //Les controles sont OK, MAJ du produit en BDD
+<span class="nc" id="L64">        return productDao.update(product);</span>
+    }
+
+    /**
+     * Recherche un produit par son identifiant
+     * @param id l'identifiant du produit recherché
+     * @return le produit
+     */
+    public Product findById(Integer id) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(id == null) {</span>
+<span class="nc" id="L74">            throw new RuntimeException(&quot;L'id du produit recherché est requis&quot;);</span>
+        }
+<span class="nc" id="L76">        Product product = productDao.findById(id);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if(product == null) {</span>
+<span class="nc" id="L78">            throw new RuntimeException(&quot;Le produit n'a pas été trouvé en BDD&quot;);</span>
+        }
+<span class="nc" id="L80">        return product;</span>
+    }
+
+    /**
+     * Supprimer le produit du l'id est fourni
+     * @param id le produit a supprimer
+     */
+    public void delete(Integer id) {
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if(id == null) {</span>
+<span class="nc" id="L89">            throw new RuntimeException(&quot;L'id du produit à supprimer est requis&quot;);</span>
+        }
+<span class="nc" id="L91">        Product product = productDao.findById(id);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        if(product == null) {</span>
+<span class="nc" id="L93">            throw new RuntimeException(&quot;Le produit n'a pas été trouvé en BDD&quot;);</span>
+        }
+<span class="nc" id="L95">        productDao.delete(id);</span>
+<span class="nc" id="L96">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

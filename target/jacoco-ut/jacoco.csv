@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+EvaluationTestslogiciels,fr.troisIl.evaluation,ProductService,96,26,19,3,25,8,13,3,2,3
+EvaluationTestslogiciels,fr.troisIl.evaluation,Product,18,6,0,0,8,2,5,2,5,2
+EvaluationTestslogiciels,fr.troisIl.evaluation,Database,44,68,1,1,16,24,2,6,1,6
+EvaluationTestslogiciels,fr.troisIl.evaluation,ProductDao,145,6,2,0,41,3,5,1,4,1

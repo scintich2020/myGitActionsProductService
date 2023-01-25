@@ -57,10 +57,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <sonar.coverage.jacoco.xmlReportPaths>
-            ../app-it/target/site/jacoco-aggregate/jacoco.xml
+           target/jacoco-ut/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
 
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
 
